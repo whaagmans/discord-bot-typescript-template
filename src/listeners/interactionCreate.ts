@@ -6,6 +6,7 @@ import {
 	ModalSubmitInteraction,
 } from 'discord.js';
 import { Commands } from 'src/Commands';
+import { Modals } from 'src/Modals';
 
 const interactionCreate = (client: Client): void => {
 	client.on(Events.InteractionCreate, async (interaction: Interaction) => {
@@ -18,22 +19,28 @@ const interactionCreate = (client: Client): void => {
 	});
 };
 
-const handleModalSubmit = async (interaction: ModalSubmitInteraction) => {
-	const username = interaction.fields.getTextInputValue('usernameInput');
-	const password = interaction.fields.getTextInputValue('passwordInput');
-	interaction.reply({
-		content: `thx for these fields: ${username} ${password}`,
-	});
+const handleModalSubmit = async (
+	interaction: ModalSubmitInteraction
+): Promise<void> => {
+	const modalResponse = Modals.find(
+		(modal) => modal.name === interaction.customId
+	);
+	if (!modalResponse) {
+		interaction.followUp({ content: 'an error has occured', ephemeral: true });
+		return;
+	}
+
+	modalResponse.run(interaction);
 };
 
 const handleSlashCommand = async (
 	interaction: CommandInteraction
 ): Promise<void> => {
 	const slashCommand = Commands.find(
-		(c) => c.data.name === interaction.commandName
+		(command) => command.data.name === interaction.commandName
 	);
 	if (!slashCommand) {
-		interaction.followUp({ content: 'an error has occurred' });
+		interaction.followUp({ content: 'an error has occurred', ephemeral: true });
 		return;
 	}
 
