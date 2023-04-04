@@ -16,13 +16,13 @@ Clone the repository and install the dependencies using either Yarn or NPM:
 
 ```sh
 # Using Yarn
-$ git clone https://github.com/yourusername/discord-bot-template.git
-$ cd discord-bot-template/
+$ git clone https://github.com/Redeamerz/discord-bot-typescript-template.git
+$ cd discord-bot-typescript-template/
 $ yarn
 
 # Using NPM
-$ git clone https://github.com/yourusername/discord-bot-template.git
-$ cd discord-bot-template/
+$ git clone https://github.com/Redeamerz/discord-bot-typescript-template.git
+$ cd discord-bot-typescript-template/
 $ npm install
 ```
 
