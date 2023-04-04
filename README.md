@@ -26,6 +26,12 @@ $ cd discord-bot-template/
 $ npm install
 ```
 
+Create a .env file and add your Discord bot token using the following format:
+
+```makefile
+DISCORD_TOKEN=your_bot_token_here
+```
+
 ## Architecture
 
 The project structure is organized as follows:
