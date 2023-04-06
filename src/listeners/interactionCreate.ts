@@ -26,7 +26,7 @@ const handleModalSubmit = async (
 		(modal) => modal.name === interaction.customId
 	);
 	if (!modalResponse) {
-		interaction.followUp({ content: 'an error has occured', ephemeral: true });
+		interaction.reply({ content: 'an error has occured', ephemeral: true });
 		return;
 	}
 
@@ -40,7 +40,7 @@ const handleSlashCommand = async (
 		(command) => command.data.name === interaction.commandName
 	);
 	if (!slashCommand) {
-		interaction.followUp({ content: 'an error has occurred', ephemeral: true });
+		interaction.reply({ content: 'an error has occurred', ephemeral: true });
 		return;
 	}
 
