@@ -23,7 +23,7 @@ const handleModalSubmit = async (
 	interaction: ModalSubmitInteraction
 ): Promise<void> => {
 	const modalResponse = Modals.find(
-		(modal) => modal.name === interaction.customId
+		(modal) => modal.modalReference === interaction.customId
 	);
 	if (!modalResponse) {
 		interaction.reply({ content: 'an error has occured', ephemeral: true });
